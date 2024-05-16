@@ -1,1 +1,79 @@
-Hello World Again!
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mission Impossible Countdown</title>
+  <link rel="stylesheet" type="text/css" href="timer.css">
+</head>
+
+<body>
+<div class="pixelated"></div>
+
+<div class="container">
+  <div class="timer">
+    <div id="hour">00</div>
+    <div class="divider">:</div>
+    <div id="minute">00</div>
+    <div class="divider">:</div>
+    <div id="second">00</div>
+  </div>
+
+  <div class="footer">
+    <div class="device">DEVICE</div>
+    <div class="armed">ARMED</div>
+    <div class="signal">
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+      <div class="signal-bar"></div>
+    </div>
+  </div>
+
+  <div class="code">
+	  <h2>Enter the passcode to disarm</h2>
+	  <input type="text" class="codeinput"></input>
+			<br /><br />
+	  <input type="button" class="codebutton" value="Disarm" id="checkbutton"></input>
+			<div><span id="errormessage" class="err"></span></div>
+  </div>
+</div>
+<script>
+  const checkButton = document.getElementById("checkbutton");
+  checkButton.addEventListener("click", () => {
+    const codeInput = document.querySelector(".codeinput");
+    if (codeInput.value === "missiles at midnight") {
+      // alert("Mission Impossible Disarmed");
+      clearInterval(myfunc);
+      const armedIndicator = document.querySelector(".armed");
+      armedIndicator.innerHTML = "DISARMED";
+      armedIndicator.style.color = "green";
+      // armedIndicator.style.text-shadow = "0 0 10px green";
+    } else {
+      const errorMessage = document.getElementById("errormessage");
+      errorMessage.innerHTML = "  Incorrect passcode. Try again.";
+      codeInput.value = "";
+      setTimeout(() => {
+        errorMessage.innerHTML = "";
+      }, 2000);
+    }
+  });
+</script>
+<script>
+	const countDownDate = new Date("May 15, 2025 05:15:55").getTime();
+
+const myfunc = setInterval(() => {
+  const currentTime = new Date().getTime();
+  const timeLeft = countDownDate - currentTime;
+  const hour = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minute = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const second = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  document.getElementById("hour").innerHTML = hour < 10 ? "0" + hour.toString() : hour;
+  document.getElementById("minute").innerHTML = minute < 10 ? "0" + minute.toString() : minute;
+  document.getElementById("second").innerHTML = second < 10 ? "0" + second.toString() : second;
+}, 1000);
+</script>
+</body>
+</html>

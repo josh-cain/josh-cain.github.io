@@ -1,0 +1,200 @@
+body {
+    --yellow: #ede20f;
+    align-items: center;
+    background-color: #121011;
+    color: var(--yellow);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+}
+
+.picture-toggle {
+    bottom: 0;
+    font-family: "Signika Negative", sans-serif;
+    left: 0;
+    margin: 1rem;
+    position: absolute;
+
+    & > img {
+        bottom: 1.5rem;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+        cursor: pointer;
+
+        > img {
+            opacity: 1;
+        }
+    }
+}
+
+.pixelated {
+    background: url(https://i.imgur.com/FlMW59B.png) repeat scroll left top;
+    height: 100vh;
+    left: 0;
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 2;
+}
+
+.container {
+    border: 1px solid rgba(50, 50, 50, 1);
+    border-radius: 8px;
+    padding: 4rem;
+}
+
+.timer {
+    font-family: "Signika Negative", sans-serif;
+    font-size: 128px;
+    text-shadow: 0px 0px 5px #cfd117;
+
+    > div {
+        display: inline-block;
+    }
+}
+
+.code {
+    font-family: "Signika Negative", sans-serif;
+    font-size: 24px;
+    text-shadow: 0px 0px 5px #cfd117;
+    padding: 1em 1em;
+
+    > div {
+        display: inline-block;
+    }
+}
+
+.codeinput {
+    border: 4px solid var(--yellow);
+    background-color: #121011;
+    font-family: "Signika Negative", sans-serif;
+    font-size: 18px;
+    color: var(--yellow);
+    width: 100%;
+}
+
+.codebutton {
+    border: 4px solid var(--yellow);
+    background-color: #121011;
+    font-family: "Signika Negative", sans-serif;
+    font-size: 18px;
+    color: var(--yellow);
+}
+
+.err {
+    background-color: #121011;
+    font-family: "Signika Negative", sans-serif;
+    font-size: 18px;
+    color: red;
+    text-shadow: 0px 0px 5px #cfd117;
+}
+
+.divider {
+    font-size: 100px;
+    transform: translateY(-1rem);
+    padding: 0.75rem;
+    animation: blink-divider 1s ease alternate infinite;
+}
+
+.footer {
+    margin-top: 1rem;
+    font-family: "Barlow", sans-serif;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.device {
+    border: 4px solid transparent;
+    letter-spacing: 2px;
+    margin-left: -1.5rem;
+    padding: 0.5rem 2rem;
+    text-shadow: 0px 0px 3px #cfd117;
+}
+
+.armed {
+    border: 4px solid currentColor;
+    box-shadow:
+        0px 0px 5px #cfd117,
+        inset 0px 0px 3px #cfd117;
+    letter-spacing: 2px;
+    padding: 0.5rem 2rem;
+    text-shadow: 0px 0px 3px #cfd117;
+}
+
+.signal {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+}
+
+.signal-bar {
+    background-color: var(--yellow);
+    box-shadow: 0px 0px 5px #cfd117;
+    margin-right: 0.5rem;
+    width: 10px;
+}
+
+.signal-bar:nth-child(1) {
+    height: 5%;
+}
+
+.signal-bar:nth-child(2) {
+    height: 10%;
+}
+
+.signal-bar:nth-child(3) {
+    height: 20%;
+}
+
+.signal-bar:nth-child(4) {
+    height: 40%;
+}
+
+.signal-bar:nth-child(5) {
+    height: 60%;
+}
+
+.signal-bar:nth-child(6) {
+    height: 80%;
+}
+
+.signal-bar:nth-child(7) {
+    animation: blink-bar 10s 3s ease infinite;
+    height: 100%;
+    opacity: 0.25;
+}
+
+@keyframes blink-bar {
+    80% {
+        opacity: 0.25;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.25;
+    }
+}
+
+@keyframes blink-divider {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
